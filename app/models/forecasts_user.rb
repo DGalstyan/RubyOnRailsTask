@@ -1,0 +1,2 @@
+class ForecastsUser < ApplicationRecord
+end

@@ -1,0 +1,45 @@
+<div class="weather-widget card ml-0 mr-0" id="forecast-<%= forecast.id %>">
+  <div class="card-block">
+    <% unless forecast.default_forecast?  %>
+    <button type="button" class="close delete-forecast" data-forecast-id="<%= forecast.id %>" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+    <% end %>
+    <h3 class="card-title"><%= forecast.name %></h3>
+    <h5 class="card-title text-muted"><%= local_time(forecast.time_zone_name) %></h5>
+    <h5 class="card-title"><%= w_weather(forecast.w_data[0])['description'].titleize %></h5>
+    <div class="row">
+      <div class="col-6 main-avg">
+        <i class="wi <%= w_icon(w_weather(forecast.w_data[0])['id'], w_weather(forecast.w_data[0])['icon']) %> wv-avg"></i>&nbsp;
+        <span><%= t('widgets.forecast.c', c: w_main(forecast.w_data[0])['temp'].round) %></span>
+      </div>
+      <div class="col-6">
+        <div class="text-muted"><%= t('widgets.forecast.precipitation', precipitation: precipitation(forecast.w_data[0]).to_i) %></div>
+        <div class="text-muted"><%= t('widgets.forecast.pressure', pressure: w_main(forecast.w_data[0])['pressure']) %></div>
+        <div class="text-muted"><%= t('widgets.forecast.humidity', humidity: w_main(forecast.w_data[0])['humidity']) %></div>
+        <div class="text-muted"><%= t('widgets.forecast.wind', wind: w_wind(forecast.w_data[0])['speed']) %></div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="row" style="margin: 20px;">-->
+    <!--<canvas class="weather-chart" width="400" height="200"></canvas>-->
+    <!--<script>-->
+      <!--<%#= render partial: 'widgets/chart', formats: :js, locals: {forecast: forecast} %>-->
+    <!--</script>-->
+  <!--</div>-->
+  <div class="card-block bottom">
+    <div class="d-flex justify-content-between align-content-center five-forecasts">
+      <% forecast.by_weekdays.each_with_index do |(weekday, values), i| %>
+          <% next if i == 0 %>
+          <div>
+            <span class="wd text-muted"><%= weekday %></span>
+            <i class="wi text-muted <%= w_icon(w_weather(values[0])['id'], w_weather(values[0])['icon']) %> wv-icon"></i>
+            <div>
+              <span class="t-max"><%= t('widgets.forecast.c', c: forecast.day_avg(values, :max).round) %></span>
+              <span class="t-min text-muted"><%= t('widgets.forecast.c', c: forecast.day_avg(values, :min).round) %></span>
+            </div>
+          </div>
+      <% end%>
+    </div>
+  </div>
+</div>

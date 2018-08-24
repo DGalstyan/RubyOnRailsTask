@@ -1,0 +1,9 @@
+<div class="d-flex flex-column">
+  <% unless forecasts.blank? %>
+      <% forecasts.each do |forecast| %>
+          <%= render 'widgets/forecast_card_item', forecast: forecast %>
+      <% end %>
+  <% else %>
+          <%= render 'widgets/forecast_empty_item' %>
+  <% end %>
+</div>

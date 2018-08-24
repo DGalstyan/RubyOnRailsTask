@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<table>
+  <thead>
+  <tr>
+    <th colspan="4"></th>
+  </tr>
+  </thead>
+    <tr>
+      <td><%= @forecast.id %></td>
+      <td><%= @forecast.city_id %></td>
+      <td><%= @forecast.name %></td>
+      <td><%= @forecast.country_code %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back', forecasts_path %>

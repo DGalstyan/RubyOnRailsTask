@@ -1,0 +1,9 @@
+<% if flash[:alert] || flash[:error] %>
+    <script>
+      $.growl.error({message: '<%= flash[:alert] || flash[:error] %>', location: 'bl'});
+    </script>
+<% elsif flash[:notice] %>
+    <script>
+      $.growl.notice({message: '<%= flash[:notice] %>', location: 'bl'});
+    </script>
+<% end %>

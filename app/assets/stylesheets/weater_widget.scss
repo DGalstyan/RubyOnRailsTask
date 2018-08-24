@@ -1,0 +1,22 @@
+.weather-widget {
+  margin: 5px;
+
+
+
+  .five-forecasts {
+    & >div {
+      text-align: center !important;
+    }
+    .wd {
+      display: block;
+    }
+    .wv-icon {
+      font-size: 35px;
+    }
+  }
+
+  .main-avg {
+    font-size: 70px;
+  }
+
+}

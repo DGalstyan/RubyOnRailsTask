@@ -1,0 +1,3 @@
+WEATHER_API_HOST: "http://api.openweathermap.org/data/2.5/forecast"
+WEATHER_API_KEY: "72e5bf1b90c02e3e1b460b4155841cd5"
+GMAP_API_KEY: "AIzaSyB1GF4gxKH0h2HMQY209p5Z2yihe57o_AM"

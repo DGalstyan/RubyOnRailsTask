@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <%= link_to t("menu.home"), root_path, class: 'nav-link' %>
+          <!--<a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>-->
+        </li>
+        <% if current_user.present? %>
+            <li class="nav-item">
+              <%= link_to t("menu.logout"), destroy_user_session_path, method: 'delete', class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t("menu.my_forecast"), forecasts_path, class: 'nav-link' %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+              <%= link_to t("menu.login"), new_user_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t("menu.sign_up"), new_user_registration_path, class: 'nav-link' %>
+            </li>
+        <% end %>
+      </ul>
+    </nav>
+    <h3 class="text-muted">
+      <a href="<%= root_path %>" class="navbar-brand">
+        Ilmateade
+       </a>
+    </h3>
+  </div>
+</div>

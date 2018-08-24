@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ilmateade</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&libraries=geometry,places"></script>
+</head>
+<body class="<%= [controller_name, action_name].join(' ') %>">
+
+
+<%= render 'navigation/top_nav' %>
+
+
+<div>
+  <div class="container">
+    <%= yield %>
+  </div>
+</div>
+
+</div>
+
+<%= render 'shared/flash' %>
+
+<%= render 'navigation/bottom_nav' %>
+</body>
+</html>
